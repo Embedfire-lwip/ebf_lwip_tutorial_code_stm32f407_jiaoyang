@@ -97,14 +97,14 @@ int main(void)
   
   printf("实验中使用TCP协议传输数据，电脑作为TCP Server，开发板作为TCP Client\n\n");
   
-  printf("本例程的IP地址均在User/arch/sys_arch.h文件中修改\n\n");
+  printf("本例程的IP地址均在main.h文件中修改\n\n");
     
   printf("本例程参考<<LwIP应用实战开发指南>>第17章 使用 RAW API 接口编程\n\n");
   
   printf("目地IP地址:%d.%d.%d.%d \t 端口号:%d\n\n",      \
           DEST_IP_ADDR0,DEST_IP_ADDR1,DEST_IP_ADDR2,DEST_IP_ADDR3,DEST_PORT);
   
-  printf("请将电脑上位机设置为TCP Server.在User/arch/sys_arch.h文件中将目标IP地址修改为您电脑上的IP地址\n\n");
+  printf("请将电脑上位机设置为TCP Server.在main.h文件中将目标IP地址修改为您电脑上的IP地址\n\n");
   
   printf("修改对应的宏定义:DEST_IP_ADDR0,DEST_IP_ADDR1,DEST_IP_ADDR2,DEST_IP_ADDR3,DEST_PORT\n\n");
   

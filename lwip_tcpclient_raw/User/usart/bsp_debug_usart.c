@@ -3,12 +3,12 @@
   * @file    bsp_debug_usart.c
   * @author  fire
   * @version V1.0
-  * @date    2016-xx-xx
+  * @date    2020-xx-xx
   * @brief   使用串口1，重定向c库printf函数到usart端口，中断接收模式
   ******************************************************************************
   * @attention
   *
-  * 实验平台:野火 STM32 F429 开发板  
+  * 实验平台:野火 STM32 F407 开发板  
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :http://firestm32.taobao.com
   *
@@ -18,7 +18,7 @@
 #include "./usart/bsp_debug_usart.h"
 
 UART_HandleTypeDef UartHandle;
-extern uint8_t ucTemp;  
+//extern uint8_t ucTemp;  
 
  /**
   * @brief  DEBUG_USART GPIO 配置,工作模式配置。115200 8-N-1
@@ -37,7 +37,10 @@ void DEBUG_USART_Config(void)
   UartHandle.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
   UartHandle.Init.Mode         = UART_MODE_TX_RX;
   
-  HAL_UART_Init(&UartHandle); 
+  HAL_UART_Init(&UartHandle);
+    
+ /*使能串口接收断 */
+  __HAL_UART_ENABLE_IT(&UartHandle,UART_IT_RXNE);  
 }
 
 
@@ -100,7 +103,6 @@ int fputc(int ch, FILE *f)
 ///重定向c库函数scanf到串口DEBUG_USART，重写向后可使用scanf、getchar等函数
 int fgetc(FILE *f)
 {
-		
 	int ch;
 	HAL_UART_Receive(&UartHandle, (uint8_t *)&ch, 1, 1000);	
 	return (ch);

@@ -3,7 +3,7 @@
   * @file    bsp_led.c
   * @author  fire
   * @version V1.0
-  * @date    2017-xx-xx
+  * @date    2020-xx-xx
   * @brief   led应用函数接口
   ******************************************************************************
   * @attention
@@ -32,7 +32,8 @@ void LED_GPIO_Config(void)
     LED1_GPIO_CLK_ENABLE();
     LED2_GPIO_CLK_ENABLE();
     LED3_GPIO_CLK_ENABLE();
-  
+	LED4_GPIO_CLK_ENABLE();
+	
     /*选择要控制的GPIO引脚*/															   
     GPIO_InitStruct.Pin = LED1_PIN;	
 
@@ -56,8 +57,13 @@ void LED_GPIO_Config(void)
     GPIO_InitStruct.Pin = LED3_PIN;	
     HAL_GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStruct);	
 
+    /*选择要控制的GPIO引脚*/															   
+    GPIO_InitStruct.Pin = LED4_PIN;	
+    HAL_GPIO_Init(LED4_GPIO_PORT, &GPIO_InitStruct);	
+
     /*关闭RGB灯*/
-    LED_RGBOFF;
+    LED_ALLOFF;
+
 
 }
 /*********************************************END OF FILE**********************/
